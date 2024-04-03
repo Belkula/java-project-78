@@ -1,46 +1,22 @@
 package hexlet.code.schemas;
+import java.util.function.Predicate;
 
-public class StringSchema {
-    private String input;
-    private boolean required = false;
-    private Integer minLength = null;
-    private String containsSubstring = null;
-
-    public StringSchema() {}
-
-    public StringSchema(String input) {
-        this.input = input;
-    }
-
-    public StringSchema required() {
-        this.required = true;
-        return this;
-    }
+public class StringSchema extends BaseSchema<String> {
 
     public StringSchema minLength(int length) {
-        this.minLength = length;
+        Predicate<String> minlen = (input) -> input.length() < length;
+        predicateList.add(minlen);
         return this;
     }
 
     public StringSchema contains(String substring) {
-        this.containsSubstring = substring;
+        Predicate<String> sublen = (input) -> input.contains(substring);
+        predicateList.add(sublen);
         return this;
     }
 
+    @Override
     public boolean isValid(String input) {
-        // Apply constraints
-        if (required && (input == null || input.isEmpty())) {
-            return false;
-        }
-
-        if (minLength != null && (input == null || input.length() < minLength)) {
-            return false;
-        }
-
-        if (containsSubstring != null && (input == null || !input.contains(containsSubstring))) {
-            return false;
-        }
-
-        return true;
+        return super.isValid(input);
     }
 }
