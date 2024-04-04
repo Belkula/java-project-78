@@ -11,6 +11,7 @@ public abstract class BaseSchema<T> {
 		predicateList.add(req);
 		return this;
 	}
+	
 
     public boolean isValid(T input) {
         for (Predicate<T> predicate : predicateList) {
