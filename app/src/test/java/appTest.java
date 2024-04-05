@@ -1,9 +1,7 @@
+package hexlet.code.schemas;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import hexlet.code.Validator;
-import hexlet.code.schemas.StringSchema;
-import hexlet.code.schemas.NumberSchema;
-import hexlet.code.schemas.MapSchema;
 import java.util.HashMap;  
 import java.util.Map;  
 
@@ -105,5 +103,31 @@ class appTest {
 
         data.put("key2", "value2");
         assertTrue(schema.isValid(data)); 
+    }
+	
+	@Test
+    void testNestedValidation() {
+        Validator validator = new Validator();
+        MapSchema<String, Object> schema = validator.map();
+
+        Map<String, BaseSchema<?>> nestedSchemas = new HashMap<>();
+        nestedSchemas.put("email", validator.string().required().contains("@"));
+
+        schema.shape(nestedSchemas);
+
+        Map<String, Object> person1 = new HashMap<>();
+        person1.put("age", 25);
+        person1.put("email", "john@example.com");
+        assertTrue(schema.isValid(person1));
+
+        Map<String, Object> person2 = new HashMap<>();
+        person2.put("age", -25); // Negative age
+        person2.put("email", "invalid_email"); // Invalid email format
+        assertFalse(schema.isValid(person2));
+
+        Map<String, Object> person3 = new HashMap<>();
+        person3.put("age", 30);
+        person3.put("email", null); // Null email
+        assertFalse(schema.isValid(person3));
     }
 }
