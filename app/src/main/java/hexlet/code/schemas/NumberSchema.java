@@ -4,7 +4,7 @@ import java.util.function.Predicate;
 public class NumberSchema extends BaseSchema<Integer> {
 
     public NumberSchema positive() {
-        Predicate<Integer> positive = (input) -> input > 0;
+        Predicate<Integer> positive = (input) -> input != null && input > 0;
         predicateList.add(positive);
         return this;
     }

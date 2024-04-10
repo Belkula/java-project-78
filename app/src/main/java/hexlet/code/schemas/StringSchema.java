@@ -5,7 +5,7 @@ public class StringSchema extends BaseSchema<String> {
 
     @Override
     public StringSchema required() {
-        Predicate<String> req = input -> input != null && input != "";
+        Predicate<String> req = input -> input != null && !input.isEmpty();
         predicateList.add(req);
         return this;
     }
