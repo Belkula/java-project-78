@@ -7,7 +7,7 @@ import java.util.function.Predicate;
 public class MapSchema<K, V> extends BaseSchema<Map<K, V>> {
 
     private final Map<String, BaseSchema<?>> propertySchemas;
-	
+
     public MapSchema() {
         this.propertySchemas = new HashMap<>();
     }
@@ -25,18 +25,18 @@ public class MapSchema<K, V> extends BaseSchema<Map<K, V>> {
                 return false;
             }
         }
-		for (Map.Entry<String, BaseSchema<?>> entry : propertySchemas.entrySet()) {
-			String propertyName = entry.getKey();
-			BaseSchema<?> propertySchema = entry.getValue();
-			Object propertyValue = input.get(propertyName);
-			
-			@SuppressWarnings("unchecked")
-			boolean isValid = ((BaseSchema<Object>) propertySchema).isValid(propertyValue);
-			
-			if (!isValid) {
-				return false;
-			}
-		}
+        for (Map.Entry<String, BaseSchema<?>> entry : propertySchemas.entrySet()) {
+            String propertyName = entry.getKey();
+            BaseSchema<?> propertySchema = entry.getValue();
+            Object propertyValue = input.get(propertyName);
+
+            @SuppressWarnings("unchecked")
+            boolean isValid = ((BaseSchema<Object>) propertySchema).isValid(propertyValue);
+
+            if (!isValid) {
+                return false;
+            }
+        }
         return true;
     }
 

@@ -5,13 +5,12 @@ import java.util.function.Predicate;
 
 public abstract class BaseSchema<T> {
     List<Predicate<T>> predicateList = new ArrayList<>();
-	
-	public BaseSchema<T> required() {
-		Predicate<T> req = input -> input != null;
-		predicateList.add(req);
-		return this;
-	}
-	
+
+    public BaseSchema<T> required() {
+        Predicate<T> req = input -> input != null;
+        predicateList.add(req);
+        return this;
+    }
 
     public boolean isValid(T input) {
         for (Predicate<T> predicate : predicateList) {
