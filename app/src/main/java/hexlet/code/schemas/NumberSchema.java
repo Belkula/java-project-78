@@ -3,9 +3,9 @@ import java.util.function.Predicate;
 import java.util.Objects;
 
 public class NumberSchema extends BaseSchema<Integer> {
-	
+
    /** Определяет что число должно быть не нулевым.
-     * 
+     *
      * @return the NumberSchema instance for method
      */
     @Override
@@ -16,7 +16,7 @@ public class NumberSchema extends BaseSchema<Integer> {
     }
 
    /** Определяет что число должно быть положительным.
-     * 
+     *
      * @return the NumberSchema instance for method
      */
     public NumberSchema positive() {
@@ -26,7 +26,9 @@ public class NumberSchema extends BaseSchema<Integer> {
     }
 
    /** Определяет что число находится в диапазоне.
-     * 
+     *
+     * @param min минимальное значение
+     * @param max максимальное значение
      * @return the NumberSchema instance for method
      */
     public NumberSchema range(int min, int max) {
