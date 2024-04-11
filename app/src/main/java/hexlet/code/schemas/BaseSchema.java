@@ -16,7 +16,7 @@ public abstract class BaseSchema<T> {
         return this;
     }
 
-   /** Определяет соответствует ли карта нужным параметрам
+   /** Определяет соответствует ли карта нужным параметрам.
      *
      * @param input проверяемая карта
      * @return true if the map satisfies all predicates, false otherwise
