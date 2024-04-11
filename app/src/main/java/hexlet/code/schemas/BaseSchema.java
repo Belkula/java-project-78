@@ -6,7 +6,7 @@ import java.util.function.Predicate;
 public abstract class BaseSchema<T> {
     protected final List<Predicate<T>> predicateList = new ArrayList<>();
 
-   /** Определяет содержимое не нулевое карты 
+   /** Определяет содержимое не нулевое карты.
      *
      * @return the BaseSchema instance for method
      */

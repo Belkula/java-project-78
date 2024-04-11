@@ -50,10 +50,9 @@ public class MapSchema<K, V> extends BaseSchema<Map<K, V>> {
         return true;
     }
 
-   /** Определяет содержимое карты 
+   /** Определяет содержимое карты.
      *
      * @param schemas проверяемая карта
-     * @return the MapSchema instance for method
      */
     public void shape(Map<String, BaseSchema<?>> schemas) {
         this.propertySchemas.clear();
