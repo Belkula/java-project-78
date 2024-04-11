@@ -22,9 +22,4 @@ public class StringSchema extends BaseSchema<String> {
         predicateList.add(substr);
         return this;
     }
-
-    @Override
-    public boolean isValid(String input) {
-        return super.isValid(input);
-    }
 }
