@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.function.Predicate;
 
 public abstract class BaseSchema<T> {
-    List<Predicate<T>> predicateList = new ArrayList<>();
+    protected final List<Predicate<T>> predicateList = new ArrayList<>();
 
     public BaseSchema<T> required() {
         Predicate<T> req = input -> input != null;

@@ -2,6 +2,7 @@ package hexlet.code.schemas;
 import java.util.function.Predicate;
 
 public class StringSchema extends BaseSchema<String> {
+    private Integer min;
 
     @Override
     public StringSchema required() {
@@ -10,7 +11,8 @@ public class StringSchema extends BaseSchema<String> {
         return this;
     }
     public StringSchema minLength(int length) {
-        Predicate<String> minlen = (input) -> ((String) input).length() >= length;
+        min = length;
+        Predicate<String> minlen = (input) -> ((String) input).length() >= min;
         predicateList.add(minlen);
         return this;
     }
