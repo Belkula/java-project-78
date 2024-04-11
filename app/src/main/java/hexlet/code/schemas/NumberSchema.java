@@ -3,6 +3,13 @@ import java.util.function.Predicate;
 
 public class NumberSchema extends BaseSchema<Integer> {
 
+    @Override
+    public NumberSchema required() {
+        Predicate<Integer> req = input ->  input instanceof Integer && input > 0;
+        predicateList.add(req);
+        return this;
+    }
+
     public NumberSchema positive() {
         Predicate<Integer> positive = (input) -> input != null && input > 0;
         predicateList.add(positive);

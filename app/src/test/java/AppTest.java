@@ -77,8 +77,8 @@ class AppTest {
     void testChainednumConstraints() {
         Validator val = new Validator();
         var num = val.number();
-        assertTrue(num.range(-1, 1).required().isValid(0));
-        assertFalse(num.range(-1, 1).required().isValid(null));
+        assertTrue(num.range(-1, 2).required().isValid(1));
+        assertFalse(num.range(-1, 2).required().isValid(null));
         assertFalse(num.positive().required().isValid(-6));
 
     }

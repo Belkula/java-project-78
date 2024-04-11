@@ -5,12 +5,12 @@ public class StringSchema extends BaseSchema<String> {
 
     @Override
     public StringSchema required() {
-        Predicate<String> req = input -> input != null && !input.isEmpty();
+        Predicate<String> req = input ->  input instanceof String &&  input.length() > 0;
         predicateList.add(req);
         return this;
     }
     public StringSchema minLength(int length) {
-        Predicate<String> minlen = (input) -> input.length() > length;
+        Predicate<String> minlen = (input) -> input.length() >= length;
         predicateList.add(minlen);
         return this;
     }
