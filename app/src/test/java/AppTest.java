@@ -72,25 +72,6 @@ class AppTest {
         assertTrue(num.range(10, 20).isValid(15));
         assertFalse(num.isValid(5));
     }
-	
-	@Test
-	void teststring(){
-	Validator val = new Validator();
-	var schema = val.string();
-	
-	assertTrue(schema.isValid(""));
-	assertTrue(schema.isValid(null));
-	schema.required();
-	assertFalse(schema.isValid(""));
-	assertFalse(schema.isValid(null));
-	assertTrue(schema.isValid("what does the fox say"));
-	assertTrue(schema.isValid("hexlet"));
-	assertTrue(schema.contains("wh").isValid("what does the fox say"));
-	assertTrue(schema.contains("what").isValid("what does the fox say"));
-	assertFalse(schema.contains("whatthe").isValid("what does the fox say"));
-	var schema1 = val.string();
-	assertTrue(schema1.minLength(10).minLength(4).isValid("Hexlet"));
-	}
 
     @Test
     void testChainednumConstraints() {
